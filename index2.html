@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+    <style>
+        .demo{
+            display: inline-block;
+            height: 50px;
+            width: 50px;
+            background-color:grey;
+        }
+        .red{
+            background-color: red; 
+        }
+        .blue{
+            background-color: blue;
+        }
+        .green{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">{{message}}
+        <div class="demo":class="color"></div>
+        <div class="demo"@click="attachRed=!attachRed":class="divClasses"></div>
+        <div class="demo":class={red:attachRed}></div>
+        <input type="text" v-model="color">
+        <input type="text" v-model="width">
+        <div class="demo":style="myStyle"></div>
+        <div class="demo":style="[myStyle,{height:width+'px'}]"></div>
+    </div>
+
+ <script>
+     new Vue({
+         el:'#app',
+         data:{
+         message:"hello",
+         attachRed:false,
+         color:'green',
+         width:50
+         },
+         computed:{
+             divClasses:function(){
+                 return{
+                     red:this.attachRed,
+                     blue:!this.attachRed,
+                 }
+             },
+             myStyle:function(){
+                 return{
+                     backgroundColor:this.color,
+                     width:this.width + 'px',
+                 }
+             }
+         }
+     })
+ </script>
+</body>
+</html>

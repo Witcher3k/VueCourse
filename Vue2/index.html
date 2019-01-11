@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p v-if="show">You can see me!</p>
+        <p v-else>Else</p>
+        <p>Do you also see me?</p>
+        <button @click="show=!show">click</button>
+        <ul>
+            <li v-for="(element,i) in ingredients" :key="ingredient">{{element}} {{i}} </li>
+        </ul>
+        <template v-for="(element,i) in ingredients">
+            <h3>{{element}}</h3>
+            <p>{{i}}</p>
+        </template>
+        <ul v-for="person in persons">
+            <span v-for="(value,key) in person"> {{key}} : {{value}} </span>
+        </ul>
+        <button @click="showObject">SHOW in CONSOLE</button>
+        <button @click="ingredients.push('somenew')">Add to array</button>
+    </div>
+</body>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                show:true,
+                ingredients:['meat','fruit','cookies'],
+                persons:[{name:"Max",age:27},{name:"Anna",age:'unknown',color:'blue'}],
+               
+            },
+            methods:{
+                showObject:function(){
+                    this.persons.forEach(element => {
+                        for (const key in element) {
+                       console.log(key+" : "+element[key]);
+
+                      
+
+                    }
+                    });
+                    
+                }
+            }
+        })
+    </script>
+</html>
