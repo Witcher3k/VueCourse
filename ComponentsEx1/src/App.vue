@@ -5,6 +5,7 @@
     <app-list-group></app-list-group>
     <hr>
     <app-footer></app-footer>
+    <user-name></user-name>
   </div>
 </template>
 
