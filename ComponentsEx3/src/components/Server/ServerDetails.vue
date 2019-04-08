@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     changeStatus() {
-      this.server.status = "Normal";
+      this.server.status = "Normal"; 
     }
   }
 };
